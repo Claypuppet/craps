@@ -14,7 +14,6 @@
 
 #include <iostream>
 
-#include "ConcreteState.h"
 #include "GameState.h"
 #include "GameEventHandler.h"
 

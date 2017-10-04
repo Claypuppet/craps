@@ -8,16 +8,11 @@
 #ifndef GAMESTATE_H_
 #define GAMESTATE_H_
 
-#include <vector>
-
 #include "Game.h"
 #include "ConcreteState.h"
 #include <vector>
 #include <memory>
 
-class GameEventHandler;
-
-typedef std::vector<std::shared_ptr<GameEventHandler>> eventList;
 
 class GameState: public State
 {
@@ -28,7 +23,6 @@ public:
 	virtual void exitAction() = 0;
 	bool handleEvent(const Event& e);
 protected:
-	eventList eventHandlers;
 	GameState(Game& aGame);
 	Game& game;
 };
