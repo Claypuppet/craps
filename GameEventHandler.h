@@ -16,11 +16,12 @@
 class GameEventHandler : public EventHandler
 {
 public:
-	GameEventHandler();
 	GameEventHandler(const GameEventHandler& original);
 	virtual ~GameEventHandler() = default;
 	virtual bool handleEvent(Context& c, const Event& e) final;
 	virtual bool handleEvent(Game& g, const Event& e) = 0;
+protected:
+	GameEventHandler();
 };
 
 /* End game event handler */
@@ -108,18 +109,6 @@ public:
 };
 
 /* End Lose 7 event handler */
-
-/* Win 7 event handler */
-
-class Win7EventHandler : public GameEventHandler
-{
-public:
-	Win7EventHandler();
-	virtual ~Win7EventHandler() = default;
-	virtual bool handleEvent(Game& g, const Event& e) override;
-};
-
-/* End Win 7 event handler */
 
 /* Score 8 event handler */
 

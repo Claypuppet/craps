@@ -40,6 +40,6 @@ void Context::run()
 	while(!events.empty()){
 		Event e = events.front();
 		events.pop();
-		currentState->handleEvent(e);
+		currentState->handleEvent(e, *this);
 	}
 }

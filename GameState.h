@@ -8,10 +8,12 @@
 #ifndef GAMESTATE_H_
 #define GAMESTATE_H_
 
-#include "Game.h"
-#include "ConcreteState.h"
 #include <vector>
 #include <memory>
+
+#include "Game.h"
+#include "ConcreteState.h"
+#include "GameEventHandler.h"
 
 
 class GameState: public State

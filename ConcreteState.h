@@ -12,9 +12,9 @@
 #include <memory>
 
 #include "Event.h"
+#include "ConcreteEventHandler.h"
 
 class Context;
-class EventHandler;
 typedef std::vector<std::shared_ptr<EventHandler>> eventList;
 
 
@@ -26,7 +26,13 @@ public:
 	virtual void entryAction() = 0;
 	virtual void doActivity() = 0;
 	virtual void exitAction() = 0;
-	virtual bool handleEvent(const Event& e){return false;};
+	virtual bool handleEvent(const Event& e, Context& c)
+		{
+			for(eventList::iterator itr = eventHandlers.begin(); itr != eventHandlers.end(); ++itr)
+				if((*itr)->handleEvent(c, e))
+					return true;
+			return false;
+		};
 protected:
 	eventList eventHandlers;
 };

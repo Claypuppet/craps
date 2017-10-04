@@ -9,8 +9,7 @@
 #define CONCRETEEVENTHANDLER_H_
 
 #include "Event.h"
-#include "Context.h"
-#include "GameState.h"
+class Context;
 
 class EventHandler
 {

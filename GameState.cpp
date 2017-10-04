@@ -15,7 +15,6 @@
 #include <iostream>
 
 #include "GameState.h"
-#include "GameEventHandler.h"
 
 GameState::GameState(Game& aGame): game(aGame)
 {
@@ -27,22 +26,12 @@ GameState::~GameState()
 	TRACE();
 }
 
-bool GameState::handleEvent(const Event& e)
-{
-	TRACE();
-	for(eventList::iterator itr = eventHandlers.begin(); itr != eventHandlers.end(); ++itr)
-		if((*itr)->handleEvent(game, e))
-			return true;
-	return false;
-}
-
 /* Start state */
 
 StartState::StartState(Game& aGame) : GameState(aGame)
 {
 	TRACE();
 	eventHandlers.push_back(std::make_shared<StartEventHandler>());
-	eventHandlers.push_back(std::make_shared<Win7EventHandler>());
 }
 
 StartState::~StartState()

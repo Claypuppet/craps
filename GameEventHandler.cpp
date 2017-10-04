@@ -1,3 +1,9 @@
+
+
+
+
+
+
 /*
  * GameEventHandler.cpp
  *
@@ -6,8 +12,7 @@
  */
 
 #include "GameEventHandler.h"
-
-
+#include "GameState.h"
 
 GameEventHandler::GameEventHandler()
 {
@@ -45,6 +50,9 @@ bool StartEventHandler::handleEvent(Game& game, const Event& e)
 		return true;
 	case 6:
 		game.setState(std::make_shared<Score6State>(game));
+		return true;
+	case 7:
+		game.setState(std::make_shared<WinState>(game));
 		return true;
 	case 8:
 		game.setState(std::make_shared<Score8State>(game));
@@ -201,17 +209,3 @@ bool Lose7EventHandler::handleEvent(Game& game, const Event& e)
 	}
 }
 
-Win7EventHandler::Win7EventHandler()
-{
-}
-
-bool Win7EventHandler::handleEvent(Game& game, const Event& e)
-{
-	switch(e.getId()){
-	case 7:
-		game.setState(std::make_shared<WinState>(game));
-		return true;
-	default:
-		return false;
-	}
-}
