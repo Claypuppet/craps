@@ -23,7 +23,6 @@ public:
 	virtual void entryAction() = 0;
 	virtual void doActivity() = 0;
 	virtual void exitAction() = 0;
-	bool handleEvent(const Event& e);
 protected:
 	GameState(Game& aGame);
 	Game& game;

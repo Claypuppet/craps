@@ -27,12 +27,12 @@ public:
 	virtual void doActivity() = 0;
 	virtual void exitAction() = 0;
 	virtual bool handleEvent(const Event& e, Context& c)
-		{
-			for(eventList::iterator itr = eventHandlers.begin(); itr != eventHandlers.end(); ++itr)
-				if((*itr)->handleEvent(c, e))
-					return true;
-			return false;
-		};
+	{
+		for(eventList::iterator itr = eventHandlers.begin(); itr != eventHandlers.end(); ++itr)
+			if((*itr)->handleEvent(c, e))
+				return true;
+		return false;
+	};
 protected:
 	eventList eventHandlers;
 };

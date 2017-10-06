@@ -8,35 +8,28 @@
 #include <iostream>
 
 #include "Game.h"
-#include "tests.h"
+
+
+#define BOOST_TEST_MODULE CrapsTestModule1
+#define BOOST_TEST_DYN_LINK
+#define BOOST_TEST_NO_MAIN
+
+#include <boost/test/unit_test.hpp>
+
 
 void playGame(){
 	Game g;
 	g.play();
 }
 
-void testGame(){
-	executeTests();
-}
-
-void calculateWinPercentage(){
-	Game g;
-	int won = 0;
-	size_t games = 10000;
-	for(size_t i = 0; i < games; ++i){
-		g.play();
-		if(dynamic_cast<WinState*>(g.getState().get()))
-			++won;
-	}
-	std::cout << "Win chance: " << 100 * (static_cast<float>(won) / games) << "%!" << std::endl;
-
-}
 
 int main(int argc, char **argv)
 {
 	std::cout << "Craps started" << std::endl << std::endl;
 
-	playGame();
+
+	boost::unit_test::unit_test_main( &init_unit_test, argc, argv );
+//	playGame();
 
 	std::cout << std::endl << "Craps finished" << std::endl;
 }
