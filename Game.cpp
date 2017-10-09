@@ -13,9 +13,8 @@
 
 Game::Game() :
 		dice
-		{ Dice(), Dice() }
+		{ Dice(), Dice() }, running(false)
 {
-	running = true;
 }
 
 Game::~Game()
