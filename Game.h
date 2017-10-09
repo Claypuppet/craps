@@ -23,9 +23,9 @@ public:
 	void setRunning(bool running);
 	void setStartState();
 private:
+	std::array<Dice, 2> dice;
 	bool running;
 	void gameLoop();
-	std::array<Dice, 2> dice;
 };
 
 #endif /* GAME_H_ */

@@ -12,8 +12,7 @@
 #include "GameState.h"
 
 Game::Game() :
-		dice
-		{ Dice(), Dice() }, running(false)
+		dice { Dice(), Dice() }, running(false)
 {
 }
 
