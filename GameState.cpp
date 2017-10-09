@@ -5,16 +5,11 @@
  *      Author: klei
  */
 
-#if 0
-# define TRACE() (std::cout << __PRETTY_FUNCTION__ << std::endl)
-#else
-# define TRACE() ((void) 0)
-#endif
-
 
 #include <iostream>
 
 #include "GameState.h"
+#include "core.h"
 
 GameState::GameState(Game& aGame): game(aGame)
 {
@@ -75,7 +70,7 @@ void LoseState::entryAction()
 {
 	TRACE();
 	std::cout << "YOU LOSE!!" << std::endl;
-	game.setRunning(false);
+	game.end();
 }
 
 void LoseState::doActivity()
@@ -108,7 +103,7 @@ void WinState::entryAction()
 {
 	TRACE();
 	std::cout << "YOU WIN!!" << std::endl;
-	game.setRunning(false);
+	game.end();
 }
 
 void WinState::doActivity()

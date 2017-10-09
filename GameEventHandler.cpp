@@ -1,9 +1,3 @@
-
-
-
-
-
-
 /*
  * GameEventHandler.cpp
  *
@@ -13,29 +7,33 @@
 
 #include "GameEventHandler.h"
 #include "GameState.h"
+#include "core.h"
 
 GameEventHandler::GameEventHandler()
 {
-	// TODO Auto-generated constructor stub
-
+	TRACE();
 }
 
 GameEventHandler::GameEventHandler(const GameEventHandler& original)
 {
+	TRACE();
 }
 
 bool GameEventHandler::handleEvent(Context& c, const Event& e)
 {
+	TRACE();
 	Game* g = dynamic_cast<Game*>(&c);
 	return (g) ? handleEvent(*g,e) : false;
 }
 
 StartEventHandler::StartEventHandler()
 {
+	TRACE();
 }
 
 bool StartEventHandler::handleEvent(Game& game, const Event& e)
 {
+	TRACE();
 	switch(e.getId()){
 	case 2:
 	case 3:
@@ -73,28 +71,34 @@ bool StartEventHandler::handleEvent(Game& game, const Event& e)
 
 LoseEventHandler::LoseEventHandler()
 {
+	TRACE();
 }
 
 bool LoseEventHandler::handleEvent(Game& game, const Event& e)
 {
+	TRACE();
 	return false;
 }
 
 WinEventHandler::WinEventHandler()
 {
+	TRACE();
 }
 
 bool WinEventHandler::handleEvent(Game& game, const Event& e)
 {
+	TRACE();
 	return false;
 }
 
 Score4EventHandler::Score4EventHandler()
 {
+	TRACE();
 }
 
 bool Score4EventHandler::handleEvent(Game& game, const Event& e)
 {
+	TRACE();
 	switch(e.getId()){
 	case 4:
 		game.setState(std::make_shared<WinState>(game));
@@ -106,10 +110,12 @@ bool Score4EventHandler::handleEvent(Game& game, const Event& e)
 
 Score5EventHandler::Score5EventHandler()
 {
+	TRACE();
 }
 
 bool Score5EventHandler::handleEvent(Game& game, const Event& e)
 {
+	TRACE();
 	switch(e.getId()){
 	case 5:
 		game.setState(std::make_shared<WinState>(game));
@@ -121,10 +127,12 @@ bool Score5EventHandler::handleEvent(Game& game, const Event& e)
 
 Score6EventHandler::Score6EventHandler()
 {
+	TRACE();
 }
 
 bool Score6EventHandler::handleEvent(Game& game, const Event& e)
 {
+	TRACE();
 	switch(e.getId()){
 	case 6:
 		game.setState(std::make_shared<WinState>(game));
@@ -136,10 +144,12 @@ bool Score6EventHandler::handleEvent(Game& game, const Event& e)
 
 Score8EventHandler::Score8EventHandler()
 {
+	TRACE();
 }
 
 bool Score8EventHandler::handleEvent(Game& game, const Event& e)
 {
+	TRACE();
 	switch(e.getId()){
 	case 8:
 		game.setState(std::make_shared<WinState>(game));
@@ -151,10 +161,12 @@ bool Score8EventHandler::handleEvent(Game& game, const Event& e)
 
 Score9EventHandler::Score9EventHandler()
 {
+	TRACE();
 }
 
 bool Score9EventHandler::handleEvent(Game& game, const Event& e)
 {
+	TRACE();
 	switch(e.getId()){
 	case 9:
 		game.setState(std::make_shared<WinState>(game));
@@ -166,10 +178,12 @@ bool Score9EventHandler::handleEvent(Game& game, const Event& e)
 
 Score10EventHandler::Score10EventHandler()
 {
+	TRACE();
 }
 
 bool Score10EventHandler::handleEvent(Game& game, const Event& e)
 {
+	TRACE();
 	switch(e.getId()){
 	case 10:
 		game.setState(std::make_shared<WinState>(game));
@@ -181,10 +195,12 @@ bool Score10EventHandler::handleEvent(Game& game, const Event& e)
 
 Score11EventHandler::Score11EventHandler()
 {
+	TRACE();
 }
 
 bool Score11EventHandler::handleEvent(Game& game, const Event& e)
 {
+	TRACE();
 	switch(e.getId()){
 	case 11:
 		game.setState(std::make_shared<WinState>(game));
@@ -196,10 +212,12 @@ bool Score11EventHandler::handleEvent(Game& game, const Event& e)
 
 Lose7EventHandler::Lose7EventHandler()
 {
+	TRACE();
 }
 
 bool Lose7EventHandler::handleEvent(Game& game, const Event& e)
 {
+	TRACE();
 	switch(e.getId()){
 	case 7:
 		game.setState(std::make_shared<LoseState>(game));

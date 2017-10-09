@@ -10,36 +10,42 @@
 
 #include "Game.h"
 #include "GameState.h"
+#include "core.h"
 
 Game::Game() :
 		dice { Dice(), Dice() }, running(false)
 {
+	TRACE();
 }
 
 Game::~Game()
 {
-	// TODO Auto-generated destructor stub
+	TRACE();
 }
 
 void Game::play()
 {
+	TRACE();
 	setStartState();
 	gameLoop();
 }
 
 void Game::setStartState()
 {
+	TRACE();
 	statePtr sState = std::make_shared<StartState>(*this);
 	setState(sState);
 }
 
-void Game::setRunning(bool running)
+void Game::end()
 {
-	this->running = running;
+	TRACE();
+	this->running = false;
 }
 
 void Game::gameLoop()
 {
+	TRACE();
 	running = true;
 	while (running)
 	{
@@ -50,6 +56,7 @@ void Game::gameLoop()
 
 void Game::throwDice()
 {
+	TRACE();
 	unsigned short diceValue = 0;
 	for (auto& d : dice)
 	{

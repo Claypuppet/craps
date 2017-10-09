@@ -7,29 +7,34 @@
 
 #include <iostream>
 #include "Event.h"
+#include "core.h"
 
 Event::Event(unsigned short aId) :
 		id(aId)
 {
+	TRACE();
 }
 
 Event::Event(const Event& e) :
 		id(e.id)
 {
-
+	TRACE();
 }
 
 Event::~Event()
 {
+	TRACE();
 }
 
 bool Event::operator==(const Event& e)
 {
+	TRACE();
 	return e.id == id;
 }
 
 Event Event::operator =(const Event& e)
 {
+	TRACE();
 	if(this != &e){
 		id = e.id;
 	}
@@ -38,6 +43,7 @@ Event Event::operator =(const Event& e)
 
 unsigned short Event::getId() const
 {
+	TRACE();
 	return id;
 }
 

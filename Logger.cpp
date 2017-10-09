@@ -5,6 +5,10 @@
  *      Author: Vuurvlieg
  */
 
+#include <iostream>
+#include <chrono>
+#include <thread>
+
 #include "Logger.h"
 
 Logger::Logger()
@@ -18,3 +22,10 @@ Logger::~Logger()
 	// TODO Auto-generated destructor stub
 }
 
+void Logger::log(const std::string& text)
+{
+	loggerMutex.lock();
+	static clock_t start = std::clock();
+	std::cout << std::this_thread::get_id() << "\t" << std::clock() - start << "\t" << text << std::endl;
+	loggerMutex.unlock();
+}

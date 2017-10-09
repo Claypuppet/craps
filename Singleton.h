@@ -13,11 +13,9 @@ template <typename T>
 class Singleton
 {
 public:
+	Singleton() = default;
 	Singleton(const Singleton&) = delete;
-	Singleton& getInstace() { return sInstance; }
-private:
-
-	static Singleton sInstance;
+	static T& getInstace() { static T sInstance; return sInstance; }
 };
 
 

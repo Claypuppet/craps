@@ -20,7 +20,7 @@ public:
 	virtual ~Game();
 	void play();
 	void throwDice();
-	void setRunning(bool running);
+	void end();
 	void setStartState();
 private:
 	std::array<Dice, 2> dice;
