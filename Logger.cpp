@@ -24,8 +24,8 @@ Logger::~Logger()
 
 void Logger::log(const std::string& text)
 {
-	loggerMutex.lock();
+	std::this_thread::yield();
+	std::lock_guard<std::mutex> lock(loggerMutex);
 	static clock_t start = std::clock();
 	std::cout << std::this_thread::get_id() << "\t" << std::clock() - start << "\t" << text << std::endl;
-	loggerMutex.unlock();
 }

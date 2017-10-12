@@ -69,7 +69,7 @@ LoseState::~LoseState()
 void LoseState::entryAction()
 {
 	TRACE();
-	std::cout << "YOU LOSE!!" << std::endl;
+	Logger::getInstace().log("YOU LOSE!!");
 	game.end();
 }
 
@@ -102,7 +102,7 @@ WinState::~WinState()
 void WinState::entryAction()
 {
 	TRACE();
-	std::cout << "YOU WIN!!" << std::endl;
+	Logger::getInstace().log("YOU WIN!!");
 	game.end();
 }
 

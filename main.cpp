@@ -5,9 +5,6 @@
  *      Author: klei
  */
 
-#include <iostream>
-#include "Game.h"
-#include "Logger.h"
 
 #define BOOST_TEST_MODULE CrapsTestModule2
 #define BOOST_TEST_DYN_LINK
@@ -17,11 +14,16 @@
 #include <boost/test/unit_test.hpp>
 
 #include <thread>
+#include <iostream>
+
+#include "Game.h"
+#include "Logger.h"
 
 void playGame(){
 	Game g;
 	g.play();
 }
+
 
 
 int main(int argc, char **argv)

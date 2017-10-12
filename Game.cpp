@@ -64,6 +64,7 @@ void Game::throwDice()
 		diceValue += d.getValue();
 	}
 	Event e(diceValue);
-	std::cout << "you rolled total: " << diceValue << std::endl;
+
+//	Logger::getInstace().log("you rolled total: " << diceValue);
 	scheduleEvent(e);
 }
