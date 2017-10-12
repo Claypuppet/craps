@@ -5,43 +5,51 @@
  *      Author: klei
  */
 
-
-#define BOOST_TEST_MODULE CrapsTestModule2
-#define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_NO_MAIN
-
-#include <boost/config.hpp>
-#include <boost/test/unit_test.hpp>
-
-#include <thread>
+#include "../cs_common/Config.hpp"
+#include <cstdlib>
 #include <iostream>
+#include <boost/bind.hpp>
+#include <boost/asio.hpp>
+#include <boost/smart_ptr.hpp>
+#include "../cs_common/Message.hpp"
+#include "../cs_common/Session.hpp"
+#include "CrapsServer.h"
 
-#include "Game.h"
-#include "Logger.h"
-
-void playGame(){
-	Game g;
-	g.play();
+// This object represents the OS I/O service.
+// There should be at least 1 object of this type in the program.
+// TODO: find if there *should* be only one
+boost::asio::io_service io_service;
+// global accessor
+boost::asio::io_service& getIOService()
+{
+	return io_service;
 }
+
+#include "Logger.h"
 
 
 
 int main(int argc, char **argv)
 {
-	Logger::getInstace().log("Craps started!");
+	Logger::getInstace().log("Craps server started!");
 
-//	boost::unit_test::unit_test_main(&init_unit_test, argc, argv);
-//	playGame();
+	try
+	{
+		// Create the server object. This must be alive while the program runs
+		MessageASIO::Server server(getIOService(), 12345);
 
-	std::array<std::thread, 10> workerThreads;
+		// Run the service until further notice
+		getIOService().run();
+	}
 
+	catch(std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch(...)
+	{
+		std::cout << "Unknown exception" << std::endl;
+	}
 
-	for(size_t i = 0; i < workerThreads.size(); ++i)
-		workerThreads[i] = std::thread(playGame);
-
-	for (auto& t : workerThreads)
-		t.join();
-
-
-	Logger::getInstace().log("Craps finished!");
+	Logger::getInstace().log("Craps server closed!");
 }
